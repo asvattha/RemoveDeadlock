@@ -50,10 +50,7 @@ namespace RemoveDeadlock
                 bool lockTaken1 = false;
                 bool lockTaken2 = false;
 
-                if(lockTaken1 & lockTaken2)
-                {
-                    Think();
-                }
+               
 
                 try
                 {
@@ -91,6 +88,11 @@ namespace RemoveDeadlock
                 {
                     if (lockTaken1)
                         Monitor.Exit(chopstick1);
+                }
+
+                if (lockTaken1 & lockTaken2)
+                {
+                    Think();
                 }
             }
         }
